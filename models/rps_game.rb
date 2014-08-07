@@ -37,13 +37,7 @@ class RPSGame
   end
 
   def result
-    if won?
-      RPSGameResult.new(human_play: self.play, computer_play: self.computer_play, won: true, tied: false)
-    elsif tied?
-      RPSGameResult.new(human_play: self.play, computer_play: self.computer_play, won: false, tied: true)
-    else
-      RPSGameResult.new(human_play: self.play, computer_play: self.computer_play, won: false, tied: false)
-    end
+    RPSGameResult.new(human_play: self.play, computer_play: self.computer_play, won: self.won?, tied: self.tied?, created_at: Time.now)
   end
 
   class PlayTypeError < Exception
